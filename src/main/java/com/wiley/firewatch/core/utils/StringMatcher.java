@@ -1,14 +1,29 @@
 package com.wiley.firewatch.core.utils;
 
-import lombok.experimental.UtilityClass;
-
 import java.util.regex.Pattern;
 
-/**
- * Created by itatsiy on 4/27/2018.
- */
-@UtilityClass
 public class StringMatcher {
+    private final MatchingType type;
+    private final String expected;
+
+    private StringMatcher(MatchingType type, String expected) {
+        this.type = type;
+        this.expected = expected;
+    }
+
+    public boolean match(String actual) {
+        return StringMatcher.match(actual, type, expected);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("{%s, %s}", type, expected);
+    }
+
+    public static StringMatcher create(MatchingType type, String expected) {
+        return new StringMatcher(type, expected);
+    }
+
     public static boolean match(String actual, MatchingType type, String expected) {
         if (actual == null && expected == null) {
             return true;

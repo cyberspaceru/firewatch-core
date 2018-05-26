@@ -7,32 +7,28 @@ import net.lightbody.bmp.core.har.HarNameValuePair;
 import net.lightbody.bmp.core.har.HarRequest;
 
 public class RequestHeaderObserver implements IObserver<HarRequest> {
-    private final MatchingType nameMatchingType;
-    private final String name;
-    private final MatchingType valueMatchingType;
-    private final String value;
+    private final StringMatcher nameMatcher;
+    private final StringMatcher valueMatcher;
 
     public RequestHeaderObserver(MatchingType nameMatchingType, String name, MatchingType valueMatchingType, String value) {
-        this.nameMatchingType = nameMatchingType;
-        this.name = name;
-        this.valueMatchingType = valueMatchingType;
-        this.value = value;
+        this.nameMatcher = StringMatcher.create(nameMatchingType, name);
+        this.valueMatcher = StringMatcher.create(valueMatchingType, value);
     }
 
     @Override
     public boolean observe(HarRequest har) {
         String actual = null;
         for (HarNameValuePair pair : har.getHeaders()) {
-            if (StringMatcher.match(pair.getName(), nameMatchingType, name)) {
+            if (nameMatcher.match(pair.getName())) {
                 actual = pair.getValue();
                 break;
             }
         }
-        return StringMatcher.match(actual, valueMatchingType, value);
+        return valueMatcher.match(actual);
     }
 
     @Override
     public String toString() {
-        return "Header(nMatching='" + nameMatchingType + ", name='" + name + "', vMatching='" + valueMatchingType + "', value='" + value + "')";
+        return String.format("Header(nameMatcher='%s', valueMatcher='%s')", nameMatcher, valueMatcher);
     }
 }
