@@ -1,7 +1,7 @@
-package com.wiley.firewatch.core.observers.responce;
+package com.wiley.firewatch.core.observers.har.responce;
 
 import com.wiley.firewatch.core.observers.IObserver;
-import com.wiley.firewatch.core.observers.common.JsonObserver;
+import com.wiley.firewatch.core.observers.har.common.JsonObserver;
 import net.lightbody.bmp.core.har.HarResponse;
 
 import java.util.function.BiPredicate;

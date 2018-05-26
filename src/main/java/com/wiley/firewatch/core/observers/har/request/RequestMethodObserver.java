@@ -1,4 +1,4 @@
-package com.wiley.firewatch.core.observers.request;
+package com.wiley.firewatch.core.observers.har.request;
 
 import com.wiley.firewatch.core.observers.IObserver;
 import io.netty.handler.codec.http.HttpMethod;

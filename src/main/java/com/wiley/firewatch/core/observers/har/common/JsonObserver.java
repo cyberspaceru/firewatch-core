@@ -1,4 +1,4 @@
-package com.wiley.firewatch.core.observers.common;
+package com.wiley.firewatch.core.observers.har.common;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

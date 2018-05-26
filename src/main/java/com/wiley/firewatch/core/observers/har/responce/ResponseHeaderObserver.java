@@ -1,4 +1,4 @@
-package com.wiley.firewatch.core.observers.responce;
+package com.wiley.firewatch.core.observers.har.responce;
 
 import com.wiley.firewatch.core.observers.IObserver;
 import com.wiley.firewatch.core.utils.MatchingType;
