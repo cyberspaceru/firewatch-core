@@ -1,13 +1,17 @@
 package com.wiley.firewatch.core.utils;
 
+import lombok.Getter;
+import lombok.experimental.Accessors;
+
 import java.util.regex.Pattern;
 
-/**
- * Created by itatsiy on 5/26/2018.
- */
+@Accessors(fluent = true)
 public class StringReplacer {
+    @Getter
     private final MatchingType type;
+    @Getter
     private final String blank;
+    @Getter
     private final String replacement;
 
     private StringReplacer(MatchingType type, String blank, String replacement) {
@@ -31,6 +35,10 @@ public class StringReplacer {
 
     public static StringReplacer create(MatchingType type, String blank, String replacement) {
         return new StringReplacer(type, blank, replacement);
+    }
+
+    public static StringReplacer create(StringMatcher matcher, String replacement) {
+        return new StringReplacer(matcher.type(), matcher.expected(), replacement);
     }
 
     public static String replaceAll(String target, MatchingType type, String blank, String replacement) {

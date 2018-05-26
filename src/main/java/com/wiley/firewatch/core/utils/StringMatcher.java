@@ -1,9 +1,15 @@
 package com.wiley.firewatch.core.utils;
 
+import lombok.Getter;
+import lombok.experimental.Accessors;
+
 import java.util.regex.Pattern;
 
+@Accessors(fluent = true)
 public class StringMatcher {
+    @Getter
     private final MatchingType type;
+    @Getter
     private final String expected;
 
     private StringMatcher(MatchingType type, String expected) {

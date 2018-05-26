@@ -7,12 +7,12 @@ import net.lightbody.bmp.core.har.HarRequest;
 public class RequestHeaderParticipant implements IParticipant<HarRequest> {
     private final StringMatcher nameMatcher;
     private final StringMatcher valueMatcher;
-    private final String value;
+    private final String replacement;
 
-    public RequestHeaderParticipant(StringMatcher nameMatcher, StringMatcher valueMatcher, String value) {
+    public RequestHeaderParticipant(StringMatcher nameMatcher, StringMatcher valueMatcher, String replacement) {
         this.nameMatcher = nameMatcher;
         this.valueMatcher = valueMatcher;
-        this.value = value;
+        this.replacement = replacement;
     }
 
     @Override
