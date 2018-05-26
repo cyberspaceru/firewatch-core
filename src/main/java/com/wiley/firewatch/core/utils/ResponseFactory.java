@@ -29,7 +29,7 @@ public class ResponseFactory {
         headers.set(HttpHeaderNames.DATE, ZonedDateTime.now().format(FORMATTER));
         headers.set(HttpHeaderNames.CONTENT_TYPE, contentType.toString());
         headers.set(HttpHeaderNames.CONTENT_LENGTH, Integer.toString(bytes.length));
-        headers.set("Access-Control-Allow-Origin", "*");
+        headers.set(HttpHeaderNames.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
         return response;
     }
 }
